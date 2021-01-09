@@ -30,7 +30,9 @@ public class ProductInfoRepositoryTest {
         productInfo.setProductIcon("http://xxx.jpg");
         productInfo.setProductStatus(0);
         productInfo.setCategoryType(2);
-        repository.save(productInfo);
+
+        ProductInfo result = repository.save(productInfo);
+        Assert.assertNotNull(result);
 
     }
 

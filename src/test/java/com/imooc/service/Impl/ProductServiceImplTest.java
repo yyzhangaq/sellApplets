@@ -2,10 +2,12 @@ package com.imooc.service.Impl;
 
 import com.imooc.dataobject.ProductInfo;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
@@ -33,13 +35,13 @@ public class ProductServiceImplTest {
         Assert.assertNotEquals(0, productInfoList.size());
     }
 
-//    @Test
-//    public void findAll() {
-//        Sort sort = Sort.by(Sort.Order.desc("create_date"));
-//        Pageable pageable =PageRequest.of(Integer.parseInt("0"), Integer.parseInt("2"), sort);
-//        Page<ProductInfo> productInfos = productService.findAll((java.awt.print.Pageable) pageable);
-//        System.out.println(productInfos.getTotalElements());
-//    }
+    @Test
+    public void findAll() {
+        PageRequest request = PageRequest.of(0, 2);
+        Page<ProductInfo> productInfos = productService.findAll(request);
+        System.out.println(productInfos.getTotalElements());
+
+    }
 
     @Test
     public void save() {
